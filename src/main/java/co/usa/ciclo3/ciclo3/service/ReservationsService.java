@@ -27,10 +27,10 @@ public class ReservationsService {
         return reservationsRepository.getReservations(id);
     }
     public Reservations save (Reservations p){
-        if (p.getId()==null){
+        if (p.getIdReservation()==null){
             return reservationsRepository.save(p);
         }else{
-            Optional<Reservations> paux=reservationsRepository.getReservations(p.getId());
+            Optional<Reservations> paux=reservationsRepository.getReservations(p.getIdReservation());
             if(paux.equals(p)){
                 return reservationsRepository.save(p);
             }else{
