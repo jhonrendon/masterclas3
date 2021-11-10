@@ -74,7 +74,14 @@ public class Reservations implements Serializable {
         this.computer = computer;
     }
 
-    
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
     
     
     

@@ -40,16 +40,13 @@ public class Computer implements Serializable {
     @JsonIgnoreProperties("computers")
     private Category category;
     
-    
+    @OneToMany(cascade={CascadeType.PERSIST},mappedBy="computer")
+    @JsonIgnoreProperties("computer")
+    public List<Message> messages;
     
     @OneToMany(cascade={CascadeType.PERSIST},mappedBy="computer")
     @JsonIgnoreProperties("computer")
     public List<Reservations> reservations;
-    
-   
-    @OneToMany(cascade={CascadeType.PERSIST},mappedBy="computer")
-    @JsonIgnoreProperties("computer")
-    public List<Message> messages;
 
     public Integer getId() {
         return id;
@@ -99,14 +96,6 @@ public class Computer implements Serializable {
         this.category = category;
     }
 
-    public List<Reservations> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservations> reservations) {
-        this.reservations = reservations;
-    }
-
     public List<Message> getMessages() {
         return messages;
     }
@@ -114,6 +103,19 @@ public class Computer implements Serializable {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
+
+    public List<Reservations> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservations> reservations) {
+        this.reservations = reservations;
+    }
+    
+   
+    
+
+    
     
     
 
