@@ -28,17 +28,15 @@ public class Message implements Serializable {
     private Integer idMessage;
     private String messageText;
     
+    @ManyToOne
+    @JoinColumn(name="computerId")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Computer computer;
     
     @ManyToOne
     @JoinColumn(name="clientId")
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
-    
-    
-    @ManyToOne
-    @JoinColumn(name="computerId")
-    @JsonIgnoreProperties({"messages","reservations"})
-    private Computer computer;
 
     public Integer getIdMessage() {
         return idMessage;
@@ -56,14 +54,6 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public Computer getComputer() {
         return computer;
     }
@@ -71,6 +61,19 @@ public class Message implements Serializable {
     public void setComputer(Computer computer) {
         this.computer = computer;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
+    
+    
+
+    
 
     
 
